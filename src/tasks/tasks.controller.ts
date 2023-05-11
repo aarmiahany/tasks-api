@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, UsePipes, Delete, Param, Put, Req, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, UsePipes, Delete, Param, Put, Req, Logger, UseGuards } from '@nestjs/common';
 import { Request } from 'express';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto, createTaskSchema } from './dto/create-task.dto';
@@ -7,9 +7,12 @@ import { TaskIdValidationPipe } from './pipes/taskIdValidator.pipe';
 import { Task } from './schema/tasks.schema';
 import { ObjectId } from 'mongoose';
 import { UpdateTaskDto, updateTaskSchema } from './dto/update-task.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 // tasks endpoint
 @Controller('tasks')
+// enable jwt auth
+@UseGuards(AuthGuard)
 export class TasksController {
   // init logger utils
   private readonly logger = new Logger(TasksController.name);
