@@ -7,7 +7,7 @@ import { TaskIdValidationPipe } from './pipes/taskIdValidator.pipe';
 import { Task } from './schema/tasks.schema';
 import { ObjectId } from 'mongoose';
 import { UpdateTaskDto, updateTaskSchema } from './dto/update-task.dto';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 
 // tasks endpoint
 @Controller('tasks')
